@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00e5ff;
+  --color-secondary: #818cf8;
+  --color-surface: #080f1e;
+  --color-surface-lighter: #0d1526;
+  --color-dark: #030712;
+  --color-success: #34d399;
+  --color-warning: #f59e0b;
+  --color-danger: #f43f5e;
+  
+  --font-syne: "Syne", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "DM Sans", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-dark text-white font-sans antialiased;
+  }
+}
+
+@layer components {
+  .glow-primary {
+    box-shadow: 0 0 24px rgba(0, 229, 255, 0.25);
+  }
+  .glow-secondary {
+    box-shadow: 0 0 24px rgba(129, 140, 248, 0.25);
+  }
+}
+
+/* Ambient animations */
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, 30px) scale(1.1); }
+}
+
+.animate-drift {
+  animation: drift 18s ease-in-out infinite alternate;
+}
