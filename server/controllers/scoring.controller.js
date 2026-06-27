@@ -4,10 +4,9 @@ const ContributionBlock = require('../models/ContributionBlock.model');
 const scoringService = require('../services/scoring.service');
 const reputationService = require('../services/reputation.service');
 const { success, error } = require('../utils/apiResponse');
-const { GoogleGenerativeAI } = require('@google/genai');
+const { GoogleGenAI } = require('@google/genai');
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 exports.analyzeContribution = async (req, res) => {
   try {
@@ -24,9 +23,11 @@ exports.analyzeContribution = async (req, res) => {
     
     Contribution: ${text}`;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const analysis = response.text();
+    const response = await ai.models.generateContent({
+      model: 'gemini-1.5-flash',
+      contents: prompt
+    });
+    const analysis = response.text;
 
     success(res, { analysis });
   } catch (err) {
