@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 3000,
       host: '0.0.0.0',
+      allowedHosts: ['idea-exchange-v1.onrender.com'],
       proxy: {
         '/api': {
           target: 'http://localhost:3001',
