@@ -28,6 +28,10 @@ services:
         sync: false # Set to your domain (e.g., idea-exchange.onrender.com)
       - key: GEMINI_API_KEY
         sync: false # Optional: Add your Gemini API key
+      - key: OAUTH_GOOGLE_CLIENT_ID
+        sync: false # Optional: Add your Google OAuth Client ID
+      - key: OAUTH_GOOGLE_CLIENT_SECRET
+        sync: false # Optional: Add your Google OAuth Client Secret
 
   - type: redis
     name: ideaxchange-redis
